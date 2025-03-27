@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', function() {
-    
     // Elementos do DOM
     const loginForm = document.getElementById('login-form');
     const signupForm = document.getElementById('signup-form');
@@ -7,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const signupContainer = document.getElementById('signup-container');
     const welcomeContainer = document.getElementById('welcome-container');
     const welcomeUser = document.getElementById('welcome-user');
-    const logoutBtn = document.getElementById('logout-btn');
+    //const logoutBtn = document.getElementById('logout-btn');
     const loginError = document.getElementById('login-error');
     const signupError = document.getElementById('signup-error');
     const signupLink = document.getElementById('signup-link');
@@ -29,26 +28,23 @@ document.addEventListener('DOMContentLoaded', function() {
     // Evento de submit do formulário de login
     loginForm.addEventListener('submit', function(e) {
         e.preventDefault();
-        
         const email = document.getElementById('email').value;
-        const password = document.getElementById('password').value;
-        
-        // Autenticar com Firebase
-        auth.signInWithEmailAndPassword(email, password)
-            .then((userCredential) => {
-                // Login bem-sucedido
-                window.location.href = 'welcome.html';
-                checkAuth();
-            })
-            .catch((error) => {
-                // Tratar erros
-                loginError.textContent = getErrorMessage(error.code);
-            });
+    const password = document.getElementById('password').value;
+    
+    auth.signInWithEmailAndPassword(email, password)
+        .then((userCredential) => {
+            // Redireciona para welcome.html após login bem-sucedido
+            window.location.href = 'welcome.html';
+        })
+        .catch((error) => {
+            loginError.textContent = getErrorMessage(error.code);
+        });
     });
     
     // Evento de submit do formulário de cadastro
     signupForm.addEventListener('submit', function(e) {
         e.preventDefault();
+        
         const email = document.getElementById('signup-email').value;
         const password = document.getElementById('signup-password').value;
         const confirmPassword = document.getElementById('confirm-password').value;
@@ -74,14 +70,14 @@ document.addEventListener('DOMContentLoaded', function() {
             });
     });
     
-    // Evento de logout
-    logoutBtn.addEventListener('click', function() {
-        auth.signOut().then(() => {
-            checkAuth();
-            loginForm.reset();
-            loginError.textContent = '';
-        });
-    });
+    // // Evento de logout
+    // logoutBtn.addEventListener('click', function() {
+    //     auth.signOut().then(() => {
+    //         checkAuth();
+    //         loginForm.reset();
+    //         loginError.textContent = '';
+    //     });
+    // });
     
     // Observar mudanças no estado de autenticação
     auth.onAuthStateChanged((user) => {

@@ -1,8 +1,4 @@
 // Configuração do Firebase - substitua com os dados do seu projeto
-import { initializeApp } from "firebase/app";
-import { getAuth } from "firebase/auth";
-if (!firebase.apps.length) {
-    debugger;
 const firebaseConfig = {
     apiKey: "AIzaSyDowfgt8jFwD--O2l40pAtYzbpsYFyqFZc",
     authDomain: "loja-lanchonete-9fbef.firebaseapp.com",
@@ -13,8 +9,7 @@ const firebaseConfig = {
     measurementId: "G-P8SLNHXYHB"
   };
 
-// Inicializa o Firebase
-firebase.initializeApp(firebaseConfig);
-}
-// Referência para o serviço de autenticação
+const app = firebase.initializeApp(firebaseConfig);
+
+// Exporta o auth para ser usado em outros arquivos
 const auth = firebase.auth();
