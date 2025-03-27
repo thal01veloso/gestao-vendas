@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Autenticação com Firebase</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Adicione os SDKs do Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-auth-compat.js"></script>
+</head>
+<body>
+    <div class="container" id="login-container">
+        <h1>Login</h1>
+        <form id="login-form">
+            <div class="form-group">
+                <label for="email">E-mail:</label>
+                <input type="email" id="email" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Senha:</label>
+                <input type="password" id="password" required>
+            </div>
+            <button type="submit">Entrar</button>
+            <p id="login-error" class="error-message"></p>
+        </form>
+        <p>Não tem uma conta? <a href="#" id="signup-link">Cadastre-se</a></p>
+    </div>
+
+    <div class="container" id="signup-container" style="display: none;">
+        <h1>Cadastro</h1>
+        <form id="signup-form">
+            <div class="form-group">
+                <label for="signup-email">E-mail:</label>
+                <input type="email" id="signup-email" required>
+            </div>
+            <div class="form-group">
+                <label for="signup-password">Senha:</label>
+                <input type="password" id="signup-password" required minlength="6">
+            </div>
+            <div class="form-group">
+                <label for="confirm-password">Confirmar Senha:</label>
+                <input type="password" id="confirm-password" required>
+            </div>
+            <button type="submit">Cadastrar</button>
+            <p id="signup-error" class="error-message"></p>
+        </form>
+        <p>Já tem uma conta? <a href="#" id="login-link">Faça login</a></p>
+    </div>
+
+    <div class="container" id="welcome-container" style="display: none;">
+        <h1>Bem-vindo, <span id="welcome-user"></span>!</h1>
+        <p>Você está logado no sistema.</p>
+        <button id="logout-btn">Sair</button>
+    </div>
+
+    <script src="firebase-config.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
